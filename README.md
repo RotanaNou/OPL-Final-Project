@@ -1,4 +1,4 @@
-# Project Title: title here (10 words maximum)
+# Project Title: Home Automation
 
 ### Statement
 Describe your project. Why is it interesting? Why is it interesting to you personally? What do you hope to learn? 
@@ -66,11 +66,10 @@ Here each group member gets a section where they, as an individual, detail what 
 
 In the headings below, replace the silly names and GitHub handles with your actual ones.
 
-### Susan Scheme @susanscheme
+### Christian Everett @ChristianEverett
 will write the....
 
-### Leonard Lambda @lennylambda
+### Rotana Nou @RotanaNou
 will work on...
 
-### Frank Functions @frankiefunk 
-Frank is team lead. Additionally, Frank will work on...   
+
