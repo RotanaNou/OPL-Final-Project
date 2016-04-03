@@ -3,10 +3,12 @@
 ### Statement
 Create a home automation system with a raspberry pi. System will use a desktop gui client (in racket) to POST commands and GET states (of devices) to/from an http server running on the pi. The pi will process the commands and execute them (such as switching relays on/off through the pi's GPIO to enable/disable lights, garage doors, locks or other devices).
 
-### Analysis
-Explain what approaches from class you will bring to bear on the project. Be explicit: e.g., will you use recursion? How? Will you use map/filter/reduce? How? Will you use data abstraction? Will you use object-orientation? Will you use functional approaches to processing your data? Will you use state-modification approaches? A combination?
+This project intrests me because I think it has alot of practical applications and is something I myself would consider using.
 
-The idea here is to identify what ideas from the class you will use in carrying out your project. 
+I hope to learn more about how a larger scale racket application functions, and how to make use of external racket librarys such as the racket GUI library.
+
+### Analysis
+This project will use several topics covered in class. We will be using a state modification encapsulated in an object oriented approach. This object will represent the connection between client and server. We will also use map and filter when processing the returned json dataset from the server. We will also use Iteration or Recursion in some way when processing the dataset. We will also be using objects to encapsulate UI elements with the racket GUI library.
 
 ### Data set or other source materials
 Several source materials will be used in this project inluding:
@@ -18,7 +20,7 @@ Several source materials will be used in this project inluding:
 The demonstration/deliverables will inlcude a live interactive demo of the project. Users will be able to interact with the GUI racket client to switch devices (leds) on/off. The user will be able to Physically see the device state change.
 
 ### Evaluation of Results
-The level of success of this project will be determined by the ablilty to successfully send requests from the racket client to change state of a device. Verify that the devices state has changed (view a light turn on or something) and then GET the state of the device and verify that it does in fact match the device state.
+The level of success of this project will be determined by the ablilty to successfully send requests from the racket client to change state of a device. Verify that the devices state has changed (view a light turn on or something) and then GET the state of the device and verify that the returned json matchs the correct state.
 
 ## Architecture Diagram
 ![Alt text](https://github.com/oplS16projects/OPL-Final-Project/blob/master/Diagram.PNG "Project Architecture")
