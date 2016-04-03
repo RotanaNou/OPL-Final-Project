@@ -9,22 +9,13 @@ Explain what approaches from class you will bring to bear on the project. Be exp
 The idea here is to identify what ideas from the class you will use in carrying out your project. 
 
 ### Data set or other source materials
-If you will be working with existing data, where will you get those data from? (Dowload it from a website? access it in a database? create it in a simulation you will build....)
-
-How will you convert that data into a form usable for your project?  
-
-Do your homework here: if you are pulling data from somewhere, actually go download it and look at it. Explain in some detail what your plan is for accomplishing the necessary processing.
-
-If you are using some other starting materails, explain what they are. Basically: anything you plan to use that isn't code.
+Several source materials will be used in this project inluding:
+* A Raspberry pi will be used as the controller to handle the logic of automating devices
+* A four channel relay will be controlled via the Raspberry pi's GPIO pins
+* Wireless adapter to allow the pi to communicate with the client over the network
 
 ### Deliverable and Demonstration
-Explain exactly what you'll have at the end. What will it be able to do at the live demo?
-
-What exactly will you produce at the end of the project? A piece of software, yes, but what will it do? Here are some questions to think about (and answer depending on your application).
-
-Will it run on some data, like batch mode? Will you present some analytical results of the processing? How can it be re-run on different source data?
-
-Will it be interactive? Can you show it working? This project involves a live demo, so interactivity is good.
+The demonstration/deliverables will inlcude a live interactive demo of the project. Users will be able to interact with the GUI racket client to switch devices (leds) on/off. The user will be able to Physically see the device state change.
 
 ### Evaluation of Results
 The level of success of this project will be determined by the ablilty to successfully send requests from the racket client to change state of a device. Verify that the devices state has changed (view a light turn on or something) and then GET the state of the device and verify that it does in fact match the device state.
@@ -32,7 +23,21 @@ The level of success of this project will be determined by the ablilty to succes
 ## Architecture Diagram
 ![Alt text](https://github.com/oplS16projects/OPL-Final-Project/blob/master/Diagram.PNG "Project Architecture")
 
-Create several paragraphs of narrative to explain the pieces and how they interoperate.
+The Client will be a Racket application that exposes a user Inerface for the user to interact with. The Client will submit POST and GET requests to an HTTP server on the raspberry pi.
+
+The Apache HTTP server will return a table of device states on a GET request on action 1.
+
+GET  request format: <host>/execute_command.php?action=1
+body: void
+return: list of json objects in the form: {"command":"<device>","state":"<state>"}
+
+The Apache HTTP server will accepted a device state change through the form of a POST request. The HTTP server will add the state change to a table of pending state changes (MySQL DB).
+
+POST request format: <host>/execute_command.php?action=2
+body: command=<device>&state=<state>
+return: void
+
+A Daemon will periodically read the table of pending commands and go through and execute each one. For now this will just be toggling of GPIO pins on or off to switch one of the switchs on the four channel relay. 
 
 ## Schedule
 Explain how you will go from proposal to finished product. 
