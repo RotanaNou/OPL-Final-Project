@@ -27,15 +27,15 @@ The Client will be a Racket application that exposes a user Inerface for the use
 
 The Apache HTTP server will return a table of device states on a GET request on action 1.
 
-GET  request format: <host>/execute_command.php?action=1
-body: void
-return: list of json objects in the form: {"command":"<device>","state":"<state>"}
+GET  request format: <host>/execute_command.php?action=1<br>
+body: void<br>
+return: list of json objects in the form: {"command":"```<device>```","state":"```<state>```"}<br>
 
 The Apache HTTP server will accepted a device state change through the form of a POST request. The HTTP server will add the state change to a table of pending state changes (MySQL DB).
 
-POST request format: <host>/execute_command.php?action=2
-body: command=<device>&state=<state>
-return: void
+POST request format: <host>/execute_command.php?action=2<br>
+body: command=```<device>```&state=```<state>``` <br>
+return: void<br>
 
 A Daemon will periodically read the table of pending commands and go through and execute each one. For now this will just be toggling of GPIO pins on or off to switch one of the switchs on the four channel relay. 
 
