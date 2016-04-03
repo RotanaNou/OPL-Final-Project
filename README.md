@@ -1,7 +1,7 @@
 # Project Title: Home Automation
 
 ### Statement
-Describe your project. Why is it interesting? Why is it interesting to you personally? What do you hope to learn? 
+Create a home automation system with a raspberry pi. System will use a desktop gui client (in racket) to POST commands and GET states (of devices) to/from an http server running on the pi. The pi will process the commands and execute them (such as switching relays on/off through the pi's GPIO to enable/disable lights, garage doors, locks or other devices).
 
 ### Analysis
 Explain what approaches from class you will bring to bear on the project. Be explicit: e.g., will you use recursion? How? Will you use map/filter/reduce? How? Will you use data abstraction? Will you use object-orientation? Will you use functional approaches to processing your data? Will you use state-modification approaches? A combination?
@@ -27,11 +27,10 @@ Will it run on some data, like batch mode? Will you present some analytical resu
 Will it be interactive? Can you show it working? This project involves a live demo, so interactivity is good.
 
 ### Evaluation of Results
-How will you know if you are successful? 
-If you include some kind of _quantitative analysis,_ that would be good.
+The level of success of this project will be determined by the ablilty to successfully send requests from the racket client to change state of a device. Verify that the devices state has changed (view a light turn on or something) and then GET the state of the device and verify that it does in fact match the device state.
 
 ## Architecture Diagram
-Upload the architecture diagram you made for your slide presentation to your repository, and include it in-line here.
+![Alt text](https://github.com/oplS16projects/OPL-Final-Project/blob/master/Diagram.PNG "Project Architecture")
 
 Create several paragraphs of narrative to explain the pieces and how they interoperate.
 
