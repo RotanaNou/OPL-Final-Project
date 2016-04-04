@@ -1,39 +1,45 @@
 # Project Title: Home Automation
 
 ### Statement
-Describe your project. Why is it interesting? Why is it interesting to you personally? What do you hope to learn? 
+Create a home automation system with a raspberry pi. System will use a desktop gui client (in racket) to POST commands and GET states (of devices) to/from an http server running on the pi. The pi will process the commands and execute them (such as switching relays on/off through the pi's GPIO to enable/disable lights, garage doors, locks or other devices).
+
+This project intrests me because I think it has alot of practical applications and is something I myself would consider using.
+
+I hope to learn more about how a larger scale racket application functions, and how to make use of external racket librarys such as the racket GUI library.
 
 ### Analysis
-Explain what approaches from class you will bring to bear on the project. Be explicit: e.g., will you use recursion? How? Will you use map/filter/reduce? How? Will you use data abstraction? Will you use object-orientation? Will you use functional approaches to processing your data? Will you use state-modification approaches? A combination?
-
-The idea here is to identify what ideas from the class you will use in carrying out your project. 
+This project will use several topics covered in class. We will be using a state modification encapsulated in an object oriented approach. This object will represent the connection between client and server. We will also use map and filter when processing the returned json dataset from the server. We will also use Iteration or Recursion in some way when processing the dataset. We will also be using objects to encapsulate UI elements with the racket GUI library.
 
 ### Data set or other source materials
-If you will be working with existing data, where will you get those data from? (Dowload it from a website? access it in a database? create it in a simulation you will build....)
-
-How will you convert that data into a form usable for your project?  
-
-Do your homework here: if you are pulling data from somewhere, actually go download it and look at it. Explain in some detail what your plan is for accomplishing the necessary processing.
-
-If you are using some other starting materails, explain what they are. Basically: anything you plan to use that isn't code.
+Several source materials will be used in this project inluding:
+* A Raspberry pi will be used as the controller to handle the logic of automating devices
+* A four channel relay will be controlled via the Raspberry pi's GPIO pins
+* Wireless adapter to allow the pi to communicate with the client over the network
 
 ### Deliverable and Demonstration
-Explain exactly what you'll have at the end. What will it be able to do at the live demo?
-
-What exactly will you produce at the end of the project? A piece of software, yes, but what will it do? Here are some questions to think about (and answer depending on your application).
-
-Will it run on some data, like batch mode? Will you present some analytical results of the processing? How can it be re-run on different source data?
-
-Will it be interactive? Can you show it working? This project involves a live demo, so interactivity is good.
+The demonstration/deliverables will inlcude a live interactive demo of the project. Users will be able to interact with the GUI racket client to switch devices (leds) on/off. The user will be able to Physically see the device state change.
 
 ### Evaluation of Results
-How will you know if you are successful? 
-If you include some kind of _quantitative analysis,_ that would be good.
+The level of success of this project will be determined by the ablilty to successfully send requests from the racket client to change state of a device. Verify that the devices state has changed (view a light turn on or something) and then GET the state of the device and verify that the returned json matchs the correct state.
 
 ## Architecture Diagram
-Upload the architecture diagram you made for your slide presentation to your repository, and include it in-line here.
+![Alt text](https://github.com/oplS16projects/OPL-Final-Project/blob/master/Diagram.PNG "Project Architecture")
 
-Create several paragraphs of narrative to explain the pieces and how they interoperate.
+The Client will be a Racket application that exposes a user Inerface for the user to interact with. The Client will submit POST and GET requests to an HTTP server on the raspberry pi.
+
+The Apache HTTP server will return a table of device states on a GET request on action 1.
+
+GET  request format: <host>/execute_command.php?action=1<br>
+body: void<br>
+return: list of json objects in the form: {"command":"```<device>```","state":"```<state>```"}<br>
+
+The Apache HTTP server will accepted a device state change through the form of a POST request. The HTTP server will add the state change to a table of pending state changes (MySQL DB).
+
+POST request format: <host>/execute_command.php?action=2<br>
+body: command=```<device>```&state=```<state>``` <br>
+return: void<br>
+
+A Daemon will periodically read the table of pending commands and go through and execute each one. For now this will just be toggling of GPIO pins on or off to switch one of the switchs on the four channel relay. 
 
 ## Schedule
 Explain how you will go from proposal to finished product. 
