@@ -53,27 +53,23 @@ You will be expected to turn in code, documentation, and data (as appropriate) a
 Write concrete steps for your schedule to move from concept to working system. 
 
 ### First Milestone (Fri Apr 15)
-What exactly will be turned in on this day? 
+* HTTP Client in racket (no GUI)
+* HTTP Server implementation
 
 ### Second Milestone (Fri Apr 22)
-What exactly will be turned in on this day? 
+* GUI for client in racket (version 1)
 
 ### Final Presentation (last week of semester)
-What additionally will be done in the last chunk of time?
+* GPIO Controller
+* GUI for client in racket (version 2)
 
 ## Group Responsibilities
 Here each group member gets a section where they, as an individual, detail what they are responsible for in this project. Each group member writes their own Responsibility section. Include the milestones and final deliverable.
 
-**Additional instructions for teams of three:** 
-* Remember that you must have prior written permission to work in groups of three (specifically, an approved `FP3` team declaration submission).
-* The team must nominate a lead. This person is primarily responsible for code integration. This work may be shared, but the team lead has default responsibility.
-* The team lead has full partner implementation responsibilities also.
-* Identify who is team lead.
-
-In the headings below, replace the silly names and GitHub handles with your actual ones.
-
 ### Christian Everett @ChristianEverett
-will write the....
+* Implement scripts for Apache HTTP Server
+* Write a script to enable/disable GPIO pins
+* Work on racket HTTP client
 
 ### Rotana Nou @RotanaNou
 will work on...
